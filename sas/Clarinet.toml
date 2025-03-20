@@ -1,6 +1,6 @@
 [project]
-name = "stacking-service"
-description = "A Clarity smart contract for stacking BTC and distributing rewards"
+name = "stacking-as-a-service"
+description = "A Clarity smart contract ecosystem for BTC stacking and reward distribution"
 authors = []
 telemetry = false
 cache_dir = "./.cache"
@@ -10,11 +10,15 @@ requirements = []
 path = "contracts/stacking-service.clar"
 depends_on = []
 
+[contracts.stacking-rewards-pool]
+path = "contracts/stacking-rewards-pool.clar"
+depends_on = ["stacking-service"]
+
 [repl.analysis]
 passes = ["check_checker"]
 
 [repl.analysis.check_checker]
-strict = false
+strict = true
 trusted_sender = false
 trusted_caller = false
 callee_filter = false
